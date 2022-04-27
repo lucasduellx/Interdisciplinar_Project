@@ -1,9 +1,7 @@
 -- SQLite
-
 CREATE TABLE Temperature(
-Id int AUTO_INCREMENT,
-Temp DOUBLE,
-PRIMARY KEY (Id)
+Id INTEGER PRIMARY KEY AUTOINCREMENT,
+Temperature DOUBLE
 );
 
 SELECT * From Temperature
