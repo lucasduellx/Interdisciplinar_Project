@@ -26,54 +26,55 @@ def starting_url():
     answer = {"answer":[]}
     query = None
     idList = []
+    try:
+        match request.method:
+            case 'GET':
+                for item in ask['ask']:
+                    print(item['id'])
+                    idList.append(item['id'])
+                
+                idList = str(idList).replace('[','(').replace(']',')')
 
-    match request.method:
-        case 'GET':
-            for item in ask['ask']:
-                print(item['id'])
-                idList.append(item['id'])
-            
-            idList = str(idList).replace('[','(').replace(']',')')
-
-            query = cur.execute(f'SELECT Id, Temperature FROM Temperature WHERE Id IN {idList}')
+                query = cur.execute(f'SELECT Id, Temperature FROM Temperature WHERE Id IN {idList}')
 
 
-            for row in query:
-                answer['answer'].append(
+                for row in query:
+                    answer['answer'].append(
+                        {
+                            "id":row[0],
+                            "temperature":row[1]
+                        }
+                    )
+
+            case 'POST':
+                for item in ask['ask']:
+                    if item["id"] == None:
+                        cur.execute(f'INSERT INTO Temperature (Temperature) VALUES ({item["temperature"]})')
+                        conn.commit()
+                        lastIdQuery = cur.execute('SELECT last_insert_rowid() FROM Temperature LIMIT 1')
+                        item["id"] = lastIdQuery.fetchone()[0]
+
+                    else:
+                        cur.execute(f'UPDATE Temperature SET Temperature={item["temperature"]} WHERE Id = {item["id"]}')
+                        conn.commit()
+
+                    idList.append(item["id"])
+
+                idList = str(idList).replace('[','(').replace(']',')')
+
+                query = cur.execute(f'SELECT Id, Temperature FROM Temperature WHERE Id IN {idList}')
+
+                for row in query:
+                    answer['answer'].append(
                     {
                         "id":row[0],
                         "temperature":row[1]
                     }
                 )
-
-        case 'POST':
-            for item in ask['ask']:
-                if item["id"] == None:
-                    cur.execute(f'INSERT INTO Temperature (Temperature) VALUES ({item["temperature"]})')
-                    conn.commit()
-                    lastIdQuery = cur.execute(f'SELECT last_insert_rowid() FROM Temperature LIMIT 1')
-                    item["id"] = lastIdQuery.fetchone()[0]
-
-                else:
-                    cur.execute(f'UPDATE Temperature SET Temperature={item["temperature"]} WHERE Id = {item["id"]}')
-                    conn.commit()
-
-                idList.append(item["id"])
-
-            idList = str(idList).replace('[','(').replace(']',')')
-
-            query = cur.execute(f'SELECT Id, Temperature FROM Temperature WHERE Id IN {idList}')
-
-            for row in query:
-                answer['answer'].append(
-                {
-                    "id":row[0],
-                    "temperature":row[1]
-                }
-            )
-
-    cur.close()
-    conn.close()
+    finally:
+        cur.close()
+        conn.close()
+    
     return jsonify(answer)
 
 
