@@ -26,6 +26,7 @@ def starting_url():
     answer = {"answer":[]}
     query = None
     idList = []
+
     try:
         match request.method:
             case 'GET':
@@ -36,7 +37,6 @@ def starting_url():
                 idList = str(idList).replace('[','(').replace(']',')')
 
                 query = cur.execute(f'SELECT Id, Temperature FROM Temperature WHERE Id IN {idList}')
-
 
                 for row in query:
                     answer['answer'].append(
