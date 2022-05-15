@@ -1,6 +1,7 @@
 package com.intellichurras;
 
-import java.io.IOException;
+import dao.UserDAO;
+import dao.UserSession;
 import javafx.fxml.FXML;
 
 import javafx.application.Platform;
@@ -13,14 +14,32 @@ public class LoginController {
     @FXML private TextField userField;
     @FXML private PasswordField passField;
 
+    @FXML
+    private void requestPassword() throws Exception{
+        App.setRoot("forgot");
+    }
 
     @FXML
-    private void requestLogin() throws IOException {
+    private void requestRegister() throws Exception{
+        App.setRoot("register");
+    }
+
+    @FXML
+    private void requestLogin() throws Exception {
         String user = userField.getText();
         String pass = passField.getText();
-        System.out.println(user);
-        System.out.println(pass);
-        if(user.equals("admin")){
+        if(UserDAO.getInstance().checkUser(user, pass)){
+            // Statement stmt = null;
+            // ResultSet rs = null;
+            // dao.Conexao con = dao.Conexao.getInstance();
+            // Connection conn = con.getConnection();
+            // stmt = conn.createStatement();
+            // rs = stmt.executeQuery("SELECT user,pass FROM empresa.user LIMIT 1");
+            // while(rs.next()){
+            //     System.out.println(rs.getString("user"));
+            //     System.out.println(rs.getString("pass"));
+            // }
+            UserSession.getInstance(user);
             App.setRoot("principal");
         }
         else{

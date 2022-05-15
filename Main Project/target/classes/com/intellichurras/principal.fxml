@@ -7,8 +7,10 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.PrincipalController">
     <children>
-        <Label text="Principal" />
-        <Button fx:id="secondaryButton" text="Voltar ao Login" onAction="#backToLogin" />
+        <Button fx:id="logoutButton" text="Logout" onAction="#logout"/>
+        <Label fx:id="currentUser"/>
+        <Button fx:id="meatButton" text="Carnes" onAction="#requestMeat"/>
+        <Button fx:id="barbecueButton" text="Churrasquinho" onAction="#requestBarbecue"/>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

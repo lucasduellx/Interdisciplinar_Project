@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.FreezerController">
+   <children>
+        <Label text="Login" />
+        <TextField fx:id="meatField" PromptText="Carne..."/>
+      
+        <Label text="Tipo de Carne" />
+        <ComboBox fx:id="typeField" layoutX="15.0" layoutY="33.0" prefWidth="330.0" value="Bovina">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Bovina" />
+                <String fx:value="Outro" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <Label text="Ponto da Carne" />
+        <ComboBox fx:id="pointField" layoutX="15.0" layoutY="33.0" prefWidth="330.0" value="Mal Passada">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Mal Passada" />
+                <String fx:value="Ao ponto para Mal Passada" />
+                <String fx:value="Ao ponto" />
+                <String fx:value="Ao ponto para Bem Passada" />
+                <String fx:value="Bem Passada" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <VBox fx:id="showTemp" alignment="CENTER" spacing="5.0">
+            <Label text="Temperatura dos pontos da carne" />
+            <TextField fx:id="minTemp" PromptText="Temperatura Mínima..."/>
+            <TextField fx:id="maxTemp" PromptText="Temperatura Máxima..."/>
+        </VBox>
+
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
