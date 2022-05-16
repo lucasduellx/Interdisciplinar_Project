@@ -13,7 +13,7 @@
       <TextField fx:id="userField" PromptText="Usuario..."/>
       <PasswordField fx:id="passField" PromptText="Senha..."/>
       <Button fx:id="loginButton" text="Logar" onAction="#requestLogin"/>
-      <Button fx:id="registerButton" text="Registrar" onAction="#requestRegister"/>
+      <Button fx:id="registerButton" text="Cadastrar" onAction="#requestRegister"/>
       <Button fx:id="forgetButton" text="Esqueceu a senha?" onAction="#requestPassword" />
    </children>
    <padding>

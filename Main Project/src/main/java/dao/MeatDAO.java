@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import business.MeatBUSINESS;
 import helper.Meat;
 
 public class MeatDAO {
@@ -20,6 +21,31 @@ public class MeatDAO {
         if(meat == null){
             meat = new MeatDAO();
         }
+        return meat;
+    }
+
+    public Meat getMeat(String name) throws Exception{
+        Meat meat = null;
+
+        query = "SELECT * FROM meats WHERE name = ?";
+        prstmt = dao.Conexao.getInstance().getConnection().prepareStatement(query);
+        prstmt.setString(1, name);
+        rs = prstmt.executeQuery();
+        
+        dao.Conexao.getInstance().getConnection().close();
+
+        while(rs.next()){
+            meat = new Meat();
+            
+            meat.setName(rs.getString("name"));
+            meat.setType(rs.getString("type"));
+            meat.setPoint(rs.getString("point"));
+            meat.setUser(rs.getString("user"));
+            meat.setTemp_min(rs.getDouble("temp_min"));
+            meat.setTemp_max(rs.getDouble("temp_max"));
+
+        }
+
         return meat;
     }
 
@@ -54,7 +80,9 @@ public class MeatDAO {
         String user = UserSession.getSessionUser();
         query = "INSERT INTO meats(name,type,point,temp_min,temp_max,user) VALUES(?,?,?,?,?,?)";
         if(type != "Outro"){
-            return false; // FAZER REGRA DE TEMPERATURA
+            ArrayList<Double> temps = MeatBUSINESS.checkTemp(point);
+            min_temp = temps.get(0);
+            max_temp = temps.get(1);
         }
         prstmt = dao.Conexao.getInstance().getConnection().prepareStatement(query);
         prstmt.setString(1, meat);

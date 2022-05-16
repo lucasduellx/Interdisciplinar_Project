@@ -23,6 +23,24 @@ public class UserDAO {
         return user;
     }
 
+    public Boolean checkUserExist(String testuser) throws Exception{
+
+        query = "SELECT user FROM users WHERE user = ?";
+        prstmt = dao.Conexao.getInstance().getConnection().prepareStatement(query);
+        prstmt.setString(1, testuser);
+        rs = prstmt.executeQuery();
+        
+        dao.Conexao.getInstance().getConnection().close();
+
+        String DBuser = "";
+
+        while(rs.next()){
+            DBuser = rs.getString("user");
+        }
+        if(DBuser.equals(testuser)) return true;
+        return false;
+    }
+
     public Boolean checkUser(String testuser,String testpass) throws Exception{
 
         testpass = Crypto.encrypt(testpass);
@@ -55,12 +73,7 @@ public class UserDAO {
         prstmt.setString(3, question);
         prstmt.setString(4, answer);
         int result = 0;
-        try{
-            result = prstmt.executeUpdate();
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
+        result = prstmt.executeUpdate();
         dao.Conexao.getInstance().getConnection().close();
         if(result == 1) return true;
         return false;

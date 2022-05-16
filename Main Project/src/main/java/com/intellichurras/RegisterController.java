@@ -1,5 +1,6 @@
 package com.intellichurras;
 
+import business.UserBUSINESS;
 import dao.UserDAO;
 import dao.UserSession;
 import javafx.application.Platform;
@@ -24,8 +25,14 @@ public class RegisterController {
         String pass = passField.getText();
         String answer = secretAnswerField.getText();
         String question = (String) secretQuestionField.getValue();
-        
-        if(UserDAO.getInstance().registerUser(user, pass,question,answer)){
+
+        if(!UserBUSINESS.checkPass(pass)) 
+        {
+            showAlert("Erro Encontrado","Verificação de coesão","Senha precisa ter Letra maiúsculo e minúsculo e caracter especial!",Alert.AlertType.ERROR);
+            return;
+        }
+
+        if(!UserBUSINESS.checkUser(user) && UserDAO.getInstance().registerUser(user, pass,question,answer)){
             showAlert("Sucesso!","Novo Usuario","Usuario cadastrado com sucesso!",Alert.AlertType.INFORMATION);
             UserSession.getInstance(user);
             App.setRoot("principal");
