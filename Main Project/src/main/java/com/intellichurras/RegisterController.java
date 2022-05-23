@@ -1,8 +1,9 @@
 package com.intellichurras;
 
-import business.UserBUSINESS;
-import dao.UserDAO;
-import dao.UserSession;
+import com.business.UserBUSINESS;
+import com.dao.UserDAO;
+import com.dao.UserSession;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -18,6 +19,11 @@ public class RegisterController {
     @FXML private PasswordField passField;
     @FXML private ComboBox<String> secretQuestionField;
 
+
+    @FXML
+    private void backScreen() throws Exception {
+        App.setRoot("login");
+    }
     
     @FXML
     private void requestRegister() throws Exception {
@@ -28,17 +34,17 @@ public class RegisterController {
 
         if(!UserBUSINESS.checkPass(pass)) 
         {
-            showAlert("Erro Encontrado","Verificação de coesão","Senha precisa ter Letra maiúsculo e minúsculo e caracter especial!",Alert.AlertType.ERROR);
+            showAlert("Erro Encontrado","Verificação de coesão","Senha precisa ter Letra maiúsculo, minúsculo, caracter especial e mais de 8 caracteres!",Alert.AlertType.ERROR);
             return;
         }
 
         if(!UserBUSINESS.checkUser(user) && UserDAO.getInstance().registerUser(user, pass,question,answer)){
-            showAlert("Sucesso!","Novo Usuario","Usuario cadastrado com sucesso!",Alert.AlertType.INFORMATION);
+            showAlert("Sucesso!","Novo Usuário","Usuário cadastrado com sucesso!",Alert.AlertType.INFORMATION);
             UserSession.getInstance(user);
             App.setRoot("principal");
         }
         else{
-            showAlert("Erro Encontrado","Verificação de dados","Usuario já cadastrado!",Alert.AlertType.ERROR);
+            showAlert("Erro Encontrado","Verificação de dados","Usuário utilizado já existe no sistema",Alert.AlertType.ERROR);
         }
     }
 

@@ -2,9 +2,10 @@ package com.intellichurras;
 
 import java.io.IOException;
 
-import dao.MeatDAO;
-import dao.UserSession;
-import helper.Meat;
+import com.dao.MeatDAO;
+import com.dao.UserSession;
+import com.helper.Meat;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +19,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 
 public class MeatController {
 
@@ -53,8 +53,8 @@ public class MeatController {
         //Init config table
         nameCol.setCellValueFactory(
                 new PropertyValueFactory<>("name"));
-        nameCol.setCellFactory(
-                TextFieldTableCell.forTableColumn());
+        // nameCol.setCellFactory(
+        //         TextFieldTableCell.forTableColumn());
         typeCol.setCellValueFactory(
                 new PropertyValueFactory<>("type"));
         pointCol.setCellValueFactory(
@@ -69,25 +69,25 @@ public class MeatController {
         meatTable.setItems(FXCollections.observableArrayList(MeatDAO.getInstance().getMeats(UserSession.getSessionUser())));
 
 
-        nameCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Meat, String>>() {
+        // nameCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Meat, String>>() {
 
-                @Override
-                public void handle(CellEditEvent<Meat, String> event){
-                        System.out.println(event.getNewValue());
-                        // try {
-                        //         if(MeatDAO.getInstance().updateMeat(event.getNewValue(), event.getRowValue().getUser(), event.getRowValue().getPoint(), 'M')){
-                        //                 meatTable.setItems(FXCollections.observableArrayList(MeatDAO.getInstance().getMeats(UserSession.getSessionUser())));
-                        //         }
-                        //         else{
-                        //                 showAlert("Erro Encontrado", "Falha na atualização!", "Foi encontrado um erro na atualização, tente novamente!", AlertType.ERROR);
-                        //         }
-                        // } catch (Exception e) {
-                        //         showAlert("Erro Encontrado", "Falha na atualização!", "Falha na conexão com o banco de dados!", AlertType.ERROR);
-                        // }
+        //         @Override
+        //         public void handle(CellEditEvent<Meat, String> event){
+        //                 System.out.println(event.getNewValue());
+        //                 // try {
+        //                 //         if(MeatDAO.getInstance().updateMeat(event.getNewValue(), event.getRowValue().getUser(), event.getRowValue().getPoint(), 'M')){
+        //                 //                 meatTable.setItems(FXCollections.observableArrayList(MeatDAO.getInstance().getMeats(UserSession.getSessionUser())));
+        //                 //         }
+        //                 //         else{
+        //                 //                 showAlert("Erro Encontrado", "Falha na atualização!", "Foi encontrado um erro na atualização, tente novamente!", AlertType.ERROR);
+        //                 //         }
+        //                 // } catch (Exception e) {
+        //                 //         showAlert("Erro Encontrado", "Falha na atualização!", "Falha na conexão com o banco de dados!", AlertType.ERROR);
+        //                 // }
                         
-                        //((Meat) event.getTableView().getItems().get(event.getTablePosition().getRow())).setKey(event.getNewValue());
-                }
-        });
+        //                 //((Meat) event.getTableView().getItems().get(event.getTablePosition().getRow())).setKey(event.getNewValue());
+        //         }
+        // });
         
         pointCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Meat, String>>() {
 

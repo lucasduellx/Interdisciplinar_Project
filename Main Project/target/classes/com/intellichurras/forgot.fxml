@@ -9,6 +9,7 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.ForgotController">
    <children>
+      <Button fx:id="backButton" text="Voltar" onAction="#backScreen"/>
       <Label text="Recuperar Senha" />
       <TextField fx:id="userField" PromptText="Usuario..."/>
       <Button fx:id="forgotButton" text="Recuperar" onAction="#requestPassword"/>

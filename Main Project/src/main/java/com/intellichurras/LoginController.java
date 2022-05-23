@@ -1,8 +1,9 @@
 package com.intellichurras;
 
-import dao.UserDAO;
-import dao.UserSession;
 import javafx.fxml.FXML;
+
+import com.dao.UserDAO;
+import com.dao.UserSession;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;

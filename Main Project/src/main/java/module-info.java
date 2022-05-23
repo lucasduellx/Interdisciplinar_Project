@@ -6,6 +6,6 @@ module com.intellichurras {
     opens com.intellichurras to javafx.fxml;
     exports com.intellichurras;
 
-    opens helper to javafx.fxml;
-    exports helper;
+    opens com.helper to javafx.fxml;
+    exports com.helper;
 }

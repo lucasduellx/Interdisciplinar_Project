@@ -1,7 +1,8 @@
 package com.intellichurras;
 
-import dao.UserDAO;
 import javafx.fxml.FXML;
+
+import com.dao.UserDAO;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -24,6 +25,12 @@ public class ForgotController {
     @FXML
     private void initialize(){
         showQuestion.setVisible(false);
+    }
+
+    
+    @FXML
+    private void backScreen() throws Exception {
+        App.setRoot("login");
     }
 
     @FXML

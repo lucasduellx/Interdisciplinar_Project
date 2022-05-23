@@ -4,7 +4,8 @@ package com.intellichurras;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import dao.MeatDAO;
+import com.dao.MeatDAO;
+
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -55,12 +56,18 @@ public class FreezerController {
         String point = (String) pointField.getValue();
         Double min_temp;
         Double max_temp;
-        try {
-            min_temp = Double.parseDouble(minTemp.getText());
-            max_temp = Double.parseDouble(maxTemp.getText());
-        } catch (Exception e) {
-            showAlert("Erro Encontrado","Conversão de dados","Digite numeros validos!",Alert.AlertType.ERROR);
-            return;
+        if(showTemp.visibleProperty().get()){
+            try {
+                min_temp = Double.parseDouble(minTemp.getText());
+                max_temp = Double.parseDouble(maxTemp.getText());
+            } catch (Exception e) {
+                showAlert("Erro Encontrado","Conversão de dados","Digite numeros validos!",Alert.AlertType.ERROR);
+                return;
+            }
+        }
+        else{
+            min_temp = 0.0;
+            max_temp = 0.0;
         }
         
         if(MeatDAO.getInstance().registerMeat(meat, type,point,min_temp,max_temp)){

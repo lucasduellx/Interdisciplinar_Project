@@ -10,6 +10,7 @@
         <Button fx:id="logoutButton" text="Logout" onAction="#logout"/>
         <Label fx:id="currentUser"/>
         <Button fx:id="meatButton" text="Carnes" onAction="#requestMeat"/>
+        <Button fx:id="stickButton" text="Espetos" onAction="#requestStick"/>
         <Button fx:id="barbecueButton" text="Churrasquinho" onAction="#requestBarbecue"/>
     </children>
     <padding>

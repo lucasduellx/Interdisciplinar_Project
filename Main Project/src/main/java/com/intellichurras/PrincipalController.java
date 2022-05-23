@@ -2,7 +2,8 @@ package com.intellichurras;
 
 import java.io.IOException;
 
-import dao.UserSession;
+import com.dao.UserSession;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -25,6 +26,11 @@ public class PrincipalController {
     @FXML
     private void requestMeat() throws IOException{
         App.setRoot("meat");
+    }
+
+    @FXML
+    private void requestStick() throws IOException{
+        App.setRoot("stick");
     }
 
     @FXML
