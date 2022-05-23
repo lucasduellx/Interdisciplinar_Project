@@ -102,4 +102,34 @@ public class MeatDAO {
         if(result == 1) return true;
         return false;
     }
+
+    public Boolean updateMeat(String meat,String user,String point,Character updateType) throws Exception {
+        if(updateType == 'P'){
+            ArrayList<Double> temps = MeatBUSINESS.checkTemp(point);
+            query = "UPDATE meats SET point=?,temp_min=?,temp_max =? WHERE name=? and user=?";
+            prstmt = dao.Conexao.getInstance().getConnection().prepareStatement(query);
+            prstmt.setString(1, point);
+            prstmt.setDouble(2, temps.get(0));
+            prstmt.setDouble(3, temps.get(1));
+            prstmt.setString(4, meat);
+            prstmt.setString(5, user);
+        }
+        else {
+            //NÃO FUNCIONA NO MYSQL
+            query = "UPDATE meats SET name=? WHERE user=?";
+            prstmt = dao.Conexao.getInstance().getConnection().prepareStatement(query);
+            prstmt.setString(1, meat);
+            prstmt.setString(2, user);
+        }
+        int result = 0;
+        try{
+            result = prstmt.executeUpdate();
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        dao.Conexao.getInstance().getConnection().close();
+        if(result == 1) return true;
+        return false;
+    }
 }
