@@ -35,6 +35,6 @@ public class PrincipalController {
 
     @FXML
     private void requestBarbecue() throws IOException {
-        System.out.println("Maminha");
+        App.setRoot("config");
     }
 }

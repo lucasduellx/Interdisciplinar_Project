@@ -22,7 +22,6 @@ def close_connection(exception):
 def starting_url():
     conn = get_db()
     cur = conn.cursor()
-    ask = dict(json.loads(request.data))
     answer = {"answer":[]}
     query = None
     idList = []
@@ -30,13 +29,8 @@ def starting_url():
     try:
         match request.method:
             case 'GET':
-                for item in ask['ask']:
-                    print(item['id'])
-                    idList.append(item['id'])
-                
-                idList = str(idList).replace('[','(').replace(']',')')
 
-                query = cur.execute(f'SELECT Id, Temperature FROM Temperature WHERE Id IN {idList}')
+                query = cur.execute(f'SELECT Id, Temperature FROM Temperature')
 
                 for row in query:
                     answer['answer'].append(
@@ -47,6 +41,7 @@ def starting_url():
                     )
 
             case 'POST':
+                ask = dict(json.loads(request.data))
                 for item in ask['ask']:
                     if item["id"] == None:
                         cur.execute(f'INSERT INTO Temperature (Temperature) VALUES ({item["temperature"]})')
