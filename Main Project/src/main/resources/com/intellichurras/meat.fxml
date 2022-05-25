@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.MeatController">
+<VBox alignment="CENTER" maxHeight="485.0" maxWidth="442.0" minHeight="485.0" minWidth="442.0" prefHeight="485.0" prefWidth="442.0" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.MeatController">
     <children>
-        <Button fx:id="backButton" text="Voltar" onAction="#backScreen"/>
-        <Button fx:id="meatRegisterButton" text="Registrar" onAction="#registerMeat"/>
+      <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="402.0" style="-fx-spacing: 200;">
+         <children>
+              <Button fx:id="backButton" onAction="#backScreen" prefWidth="100.0" text="Voltar" />
+              <Button fx:id="meatRegisterButton" onAction="#registerMeat" prefWidth="100.0" text="Registrar" />
+         </children>
+      </HBox>
         <TableView fx:id="meatTable" editable="true">
             <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
             <columns>
-                <TableColumn fx:id="nameCol"
-                            style="-fx-alignment: CENTER;"
-                            text="Nome"/>
-                <TableColumn fx:id="typeCol"
-                            style="-fx-alignment: CENTER;"
-                            text="Tipo"/>
-                <TableColumn fx:id="pointCol"
-                            style="-fx-alignment: CENTER;"
-                            text="Ponto"/>
-                <TableColumn fx:id="tempCol"
-                            style="-fx-alignment: CENTER;"
-                            text="Temperatura">
+                <TableColumn fx:id="nameCol" style="-fx-alignment: CENTER;" text="Nome" />
+                <TableColumn fx:id="typeCol" style="-fx-alignment: CENTER;" text="Tipo" />
+                <TableColumn fx:id="pointCol" style="-fx-alignment: CENTER;" text="Ponto" />
+                <TableColumn fx:id="tempCol" style="-fx-alignment: CENTER;" text="Temperatura">
                     <columns>
-                        <TableColumn fx:id="minimaCol"
-                                    style="-fx-alignment: CENTER;"
-                                    text="Mínima"/>
-                        <TableColumn fx:id="maximaCol"
-                                    style="-fx-alignment: CENTER;"
-                                    text="Máxima"/>
+                        <TableColumn fx:id="minimaCol" style="-fx-alignment: CENTER;" text="Mínima" />
+                        <TableColumn fx:id="maximaCol" style="-fx-alignment: CENTER;" text="Máxima" />
                     </columns>
                 </TableColumn>
             </columns>

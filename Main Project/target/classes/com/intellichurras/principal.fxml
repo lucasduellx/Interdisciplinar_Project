@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.PrincipalController">
+<VBox alignment="CENTER" prefWidth="350.0" prefHeight="250.0" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.PrincipalController">
     <children>
-        <Button fx:id="logoutButton" text="Logout" onAction="#logout"/>
-        <Label fx:id="currentUser"/>
-        <Button fx:id="meatButton" text="Carnes" onAction="#requestMeat"/>
-        <Button fx:id="stickButton" text="Espetos" onAction="#requestStick"/>
-        <Button fx:id="barbecueButton" text="Churrasquinho" onAction="#requestBarbecue"/>
+      <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="0.0" prefWidth="310.0">
+         <children>
+              <Button fx:id="logoutButton" alignment="CENTER_RIGHT" nodeOrientation="RIGHT_TO_LEFT" onAction="#logout" text="Logout" textAlignment="RIGHT" />
+         </children>
+      </HBox>
+        <Label fx:id="currentUser" textAlignment="CENTER" textFill="#ff6536">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+        <Button fx:id="meatButton" onAction="#requestMeat" prefWidth="200.0" text="Carnes" />
+        <Button fx:id="stickButton" onAction="#requestStick" prefWidth="200.0" text="Espetos" />
+        <Button fx:id="barbecueButton" onAction="#requestBarbecue" prefWidth="200.0" text="Churrasquinho" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

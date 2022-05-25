@@ -1,20 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.LoginController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="448.0" spacing="20.0" style="-fx-background-color: #222224;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.LoginController">
    <children>
-      <Label text="Login" />
-      <TextField fx:id="userField" PromptText="Usuario..."/>
-      <PasswordField fx:id="passField" PromptText="Senha..."/>
-      <Button fx:id="loginButton" text="Logar" onAction="#requestLogin"/>
-      <Button fx:id="registerButton" text="Cadastrar" onAction="#requestRegister"/>
-      <Button fx:id="forgetButton" text="Esqueceu a senha?" onAction="#requestPassword" />
+      <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" text="Login" textFill="#ff6536">
+         <font>
+            <Font name="Dubai Bold" size="38.0" />
+         </font></Label>
+      <TextField fx:id="userField" PromptText="Usuario..." style="-fx-background-color: #313133; -fx-text-fill: white;" />
+      <PasswordField fx:id="passField" PromptText="Senha..." style="-fx-background-color: #313133; -fx-text-fill: white;" />
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="328.0" style="-fx-spacing: 10;">
+         <children>
+            <Button fx:id="loginButton" onAction="#requestLogin" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #ff6536;" text="Logar" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="registerButton" onAction="#requestRegister" prefWidth="120.0" style="-fx-background-color: #ff6536;" text="Cadastrar" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="forgetButton" minHeight="-Infinity" minWidth="-Infinity" onAction="#requestPassword" prefWidth="120.0" style="-fx-background-color: #ff6536;" text="Esqueceu a senha?" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </HBox>
+      <ImageView fitHeight="59.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/Logo.png" />
+         </image>
+      </ImageView>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
