@@ -1,10 +1,11 @@
 # encoding: utf-8
 import json
+import random
 from flask import Flask, request, jsonify, g
 import sqlite3
 app = Flask(__name__)
 
-DATABASE = 'database.db'
+DATABASE = 'Communication_API/database.db'
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -25,7 +26,6 @@ def starting_url():
     answer = {"answer":[]}
     query = None
     idList = []
-
     try:
         match request.method:
             case 'GET':
@@ -33,10 +33,11 @@ def starting_url():
                 query = cur.execute(f'SELECT Id, Temperature FROM Temperature')
 
                 for row in query:
+                    temp = round(row[1] + random.uniform(1.0, 50.0),2)
                     answer['answer'].append(
                         {
                             "id":row[0],
-                            "temperature":row[1]
+                            "temperature":temp
                         }
                     )
 

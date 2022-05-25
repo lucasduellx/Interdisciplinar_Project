@@ -1,19 +1,23 @@
 package com.helper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Barbecue {
     private Map<Stick,Meat> stick_meat = new HashMap<Stick,Meat>();
     private ArrayList<Barbecue> help = new ArrayList<Barbecue>();
-    private Integer pessoas;
+    private Integer peoples;
+    private Double weightMeat;
     private Meat newMeat;
     private Stick newStick;
     private String newMeatName;
     private String newStickName;
     private Double temp = 0.0;
     private String status = "Não Pronto";
+    private String finalStatus;
+    private Date date;
 
     private static Barbecue bbc;
     
@@ -22,6 +26,11 @@ public class Barbecue {
     public Barbecue(Stick stick,Meat meat){
         setNewStick(stick);
         setNewMeat(meat);
+    }
+
+    public Barbecue(Integer people, Double weight){
+        setPeoples(people);
+        setWeightMeat(weight);
     }
 
     public static Barbecue getInstance(){
@@ -39,12 +48,12 @@ public class Barbecue {
         this.stick_meat = stick_meat;
     }
 
-    public Integer getPessoas() {
-        return pessoas;
+    public Integer getPeoples() {
+        return peoples;
     }
 
-    public void setPessoas(Integer pessoas) {
-        this.pessoas = pessoas;
+    public void setPeoples(Integer peoples) {
+        this.peoples = peoples;
     }
 
     public void addMap(Stick stick,Meat meat){
@@ -112,6 +121,30 @@ public class Barbecue {
 
     public void setHelp(ArrayList<Barbecue> help) {
         this.help = help;
+    }
+
+    public Double getWeightMeat() {
+        return weightMeat;
+    }
+
+    public void setWeightMeat(Double weightMeat) {
+        this.weightMeat = weightMeat;
+    }
+
+    public String getFinalStatus() {
+        return finalStatus;
+    }
+
+    public void setFinalStatus(String finalStatus) {
+        this.finalStatus = finalStatus;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 }

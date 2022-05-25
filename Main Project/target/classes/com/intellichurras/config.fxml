@@ -3,7 +3,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.geometry.Insets?>
@@ -11,12 +10,8 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intellichurras.ConfigController">
    <children>
         <Button fx:id="backButton" text="Voltar" onAction="#backScreen"/>
-        <Label text="Quantidade de Pessoa" />
-        <TextField fx:id="peopleField" PromptText="Quantidade..."/>
-        <Label text="Login" />
-        <TextField fx:id="userField" PromptText="Usuario..."/>
-        <Label text="Login" />
-        <TextField fx:id="userField" PromptText="Usuario..."/>
+        <Button fx:id="historyButton" text="Historico de Churrasco" onAction="#requestHistory"/>
+        <Label text="Configuração do Churrasco" />
 
         <TableView fx:id="meatTable">
             <columnResizePolicy>
@@ -42,31 +37,6 @@
                             text="Nome"/>
             </columns>
         </TableView>
-
-        <!-- <TableView fx:id="meatTableSelected">
-            <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-            </columnResizePolicy>
-            <columns>
-                <TableColumn fx:id="meatColSelected"
-                            style="-fx-alignment: CENTER;"
-                            text="Nome"/>
-                <TableColumn fx:id="pointColSelected"
-                            style="-fx-alignment: CENTER;"
-                            text="Ponto"/>
-            </columns>
-        </TableView>
-
-        <TableView fx:id="stickTableSelected" style="-fx-height: 50px">
-            <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-            </columnResizePolicy>
-            <columns>
-                <TableColumn fx:id="nameColSelected"
-                            style="-fx-alignment: CENTER;"
-                            text="Nome"/>
-            </columns>
-        </TableView> -->
 
         <TableView fx:id="barbecueTable">
             <columnResizePolicy>

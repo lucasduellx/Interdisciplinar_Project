@@ -6,10 +6,8 @@ import com.dao.StickDAO;
 import com.dao.UserSession;
 import com.helper.Stick;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -46,17 +44,5 @@ public class StickController {
     @FXML
     private void backScreen() throws IOException {
         App.setRoot("principal");
-    }
-
-    private void showAlert(String Title,String Header,String Content,Alert.AlertType Type) {
-        Platform.runLater(new Runnable() {
-          public void run() {
-              Alert alert = new Alert(Type);
-              alert.setTitle(Title);
-              alert.setHeaderText(Header);
-              alert.setContentText(Content);
-              alert.showAndWait();
-          }
-        });
     }
 }
