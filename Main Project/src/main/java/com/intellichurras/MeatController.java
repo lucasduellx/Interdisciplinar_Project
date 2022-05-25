@@ -53,8 +53,6 @@ public class MeatController {
         //Init config table
         nameCol.setCellValueFactory(
                 new PropertyValueFactory<>("name"));
-        // nameCol.setCellFactory(
-        //         TextFieldTableCell.forTableColumn());
         typeCol.setCellValueFactory(
                 new PropertyValueFactory<>("type"));
         pointCol.setCellValueFactory(
@@ -67,36 +65,11 @@ public class MeatController {
         maximaCol.setCellValueFactory(
                 new PropertyValueFactory<>("temp_max"));
         meatTable.setItems(FXCollections.observableArrayList(MeatDAO.getInstance().getMeats(UserSession.getSessionUser())));
-
-
-        // nameCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Meat, String>>() {
-
-        //         @Override
-        //         public void handle(CellEditEvent<Meat, String> event){
-        //                 System.out.println(event.getNewValue());
-        //                 // try {
-        //                 //         if(MeatDAO.getInstance().updateMeat(event.getNewValue(), event.getRowValue().getUser(), event.getRowValue().getPoint(), 'M')){
-        //                 //                 meatTable.setItems(FXCollections.observableArrayList(MeatDAO.getInstance().getMeats(UserSession.getSessionUser())));
-        //                 //         }
-        //                 //         else{
-        //                 //                 showAlert("Erro Encontrado", "Falha na atualização!", "Foi encontrado um erro na atualização, tente novamente!", AlertType.ERROR);
-        //                 //         }
-        //                 // } catch (Exception e) {
-        //                 //         showAlert("Erro Encontrado", "Falha na atualização!", "Falha na conexão com o banco de dados!", AlertType.ERROR);
-        //                 // }
-                        
-        //                 //((Meat) event.getTableView().getItems().get(event.getTablePosition().getRow())).setKey(event.getNewValue());
-        //         }
-        // });
         
         pointCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Meat, String>>() {
 
                 @Override
                 public void handle(CellEditEvent<Meat, String> event){
-                        //System.out.println(event.getNewValue());
-                        //System.out.println(event.getRowValue().getName());
-                        //System.out.println(event.getRowValue().getType());
-                        //System.out.println(event.getRowValue().getUser());
                         try {
                                 if(MeatDAO.getInstance().updateMeat(event.getRowValue().getName(), event.getRowValue().getUser(), event.getNewValue(), 'P')){
                                         meatTable.setItems(FXCollections.observableArrayList(MeatDAO.getInstance().getMeats(UserSession.getSessionUser())));
@@ -107,7 +80,6 @@ public class MeatController {
                         } catch (Exception e) {
                                 showAlert("Erro Encontrado", "Falha na atualização!", "Falha na conexão com o banco de dados!", AlertType.ERROR);
                         }
-                        //((Meat) event.getTableView().getItems().get(event.getTablePosition().getRow())).setKey(event.getNewValue());
                 }
         });
 

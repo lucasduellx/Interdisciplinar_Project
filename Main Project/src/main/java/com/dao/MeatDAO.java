@@ -79,7 +79,7 @@ public class MeatDAO {
 
         String user = UserSession.getSessionUser();
         query = "INSERT INTO meats(name,type,point,temp_min,temp_max,user) VALUES(?,?,?,?,?,?)";
-        if(type != "Outro"){
+        if(!type.equals("Outro")){
             ArrayList<Double> temps = MeatBUSINESS.checkTemp(point);
             min_temp = temps.get(0);
             max_temp = temps.get(1);

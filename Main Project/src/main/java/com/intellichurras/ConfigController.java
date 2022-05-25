@@ -98,7 +98,8 @@ public class ConfigController {
 
     @FXML
     private void requestBarbecue() throws Exception {
-        App.setRoot("barbecue");
+        if(barbecueTable.getItems().size() > 0) App.setRoot("barbecue");
+        else showAlert("Relacionamento insuficiente","Relacione ao menos um espeto com uma carne", Alert.AlertType.ERROR);
     }
 
     @FXML

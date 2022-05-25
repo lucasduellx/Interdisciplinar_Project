@@ -30,8 +30,6 @@ public class FreezerController {
         typeField.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String oldV, String newV) {
-                System.out.println("Previous Value: "+ oldV);
-                System.out.println("Current Value: "+ newV);
                 if(newV.equals("Outro")){
                     showTemp.setVisible(true);
                 }

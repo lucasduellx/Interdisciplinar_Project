@@ -57,13 +57,11 @@ public class BarbecueController {
                     JSONObject jsonObject = new JSONObject(response.body());
                     for (int i = 0; i < jsonObject.getJSONArray("answer").length(); i++) {
                         JSONObject temp = jsonObject.getJSONArray("answer").getJSONObject(i);
-                        // System.out.println(temp.getInt("id"));
-                        // System.out.println(temp.getDouble("temperature"));
                         
                         for(Barbecue barb : Barbecue.getInstance().getHelp()){
                             if(barb.getNewStick().getId() == temp.getInt("id")) {
                                 barb.setTemp(temp.getDouble("temperature")); 
-                                barb.setStatus(BarbecueBUSINESS.checkCurrentTemp(barb.getNewMeat().getPoint(), temp.getDouble("temperature")));
+                                barb.setStatus(BarbecueBUSINESS.checkCurrentTemp(barb.getNewMeat(), temp.getDouble("temperature")));
                                 break;
                             }
                         }
