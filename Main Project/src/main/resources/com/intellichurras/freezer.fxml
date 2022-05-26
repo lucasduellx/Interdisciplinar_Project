@@ -14,10 +14,10 @@
    <children>
         <Button fx:id="backButton" text="Voltar" onAction="#backScreen"/>
         <Label text="Carne" />
-        <TextField fx:id="meatField" PromptText="Carne..."/>
+        <TextField fx:id="meatField" PromptText="Carne..."  style="-fx-background-color: #313133; -fx-text-fill: white;"/>
       
         <Label text="Tipo de Carne" />
-        <ComboBox fx:id="typeField" layoutX="15.0" layoutY="33.0" prefWidth="330.0" value="Bovina">
+        <ComboBox fx:id="typeField" layoutX="15.0" layoutY="33.0" prefWidth="330.0" style="-fx-background-color: #313133;" value="Bovina">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Bovina" />
@@ -27,7 +27,7 @@
         </ComboBox>
 
         <Label text="Ponto da Carne" />
-        <ComboBox fx:id="pointField" layoutX="15.0" layoutY="33.0" prefWidth="330.0" value="Mal Passada">
+        <ComboBox fx:id="pointField" layoutX="15.0" layoutY="33.0" prefWidth="330.0" style="-fx-background-color: #313133;" value="Mal Passada">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Mal Passada" />
@@ -41,8 +41,8 @@
 
         <VBox fx:id="showTemp" alignment="CENTER" spacing="5.0">
             <Label text="Temperatura dos pontos da carne" />
-            <TextField fx:id="minTemp" PromptText="Temperatura Mínima..."/>
-            <TextField fx:id="maxTemp" PromptText="Temperatura Máxima..."/>
+            <TextField fx:id="minTemp" PromptText="Temperatura Mínima..."  style="-fx-background-color: #313133; -fx-text-fill: white;"/>
+            <TextField fx:id="maxTemp" PromptText="Temperatura Máxima..."  style="-fx-background-color: #313133; -fx-text-fill: white;"/>
         </VBox>
 
         <Button fx:id="registerButton" text="Registrar" onAction="#registerMeat"/>

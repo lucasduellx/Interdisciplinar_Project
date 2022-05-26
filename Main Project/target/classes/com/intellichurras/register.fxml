@@ -16,9 +16,9 @@
       <Button fx:id="backButton" text="Voltar" onAction="#backScreen"/>
       <Label text="Registrar" />
       <Label text="Usuario" />
-      <TextField fx:id="userField" PromptText="Usuario..."/>
+      <TextField fx:id="userField" PromptText="Usuario..." style="-fx-background-color: #313133; -fx-text-fill: white;"/>
       <Label text="Senha" />
-      <PasswordField fx:id="passField" PromptText="Senha..."/>
+      <PasswordField fx:id="passField" PromptText="Senha..." style="-fx-background-color: #313133; -fx-text-fill: white;"/>
       <Label text="Pergunta Secreta" />
       <ComboBox fx:id="secretQuestionField" layoutX="15.0" layoutY="33.0" prefWidth="330.0" value="Qual o nome do seu primeiro animal de estimação?">
          <items>
@@ -33,7 +33,7 @@
          </items>
       </ComboBox>
       <Label text="Resposta" />
-      <TextField fx:id="secretAnswerField" PromptText="Resposta..."/>
+      <TextField fx:id="secretAnswerField" PromptText="Resposta..." style="-fx-background-color: #313133; -fx-text-fill: white;"/>
       <Button fx:id="registerButton" text="Registrar" onAction="#requestRegister"/>
    </children>
    <padding>

@@ -22,9 +22,9 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
             <columns>
-                <TableColumn fx:id="stickCol" style="-fx-alignment: CENTER; -fx-background-color: #ff6536;" text="Espeto" />
-                <TableColumn fx:id="tempCol" style="-fx-alignment: CENTER; -fx-background-color: #ff6536;" text="Temperatura" />
-                <TableColumn fx:id="statusCol" style="-fx-alignment: CENTER; -fx-background-color: #ff6536;" text="Status" />
+                <TableColumn fx:id="stickCol" style="-fx-alignment: CENTER;" text="Espeto" />
+                <TableColumn fx:id="tempCol" style="-fx-alignment: CENTER;" text="Temperatura" />
+                <TableColumn fx:id="statusCol" style="-fx-alignment: CENTER;" text="Status" />
             </columns>
         </TableView>
         

@@ -13,10 +13,10 @@
    <children>
         <Button fx:id="backButton" text="Voltar" onAction="#backScreen"/>
         <Label text="Nome do espeto" />
-        <TextField fx:id="stickField" PromptText="Espeto..."/>
+        <TextField fx:id="stickField" PromptText="Espeto..." style="-fx-background-color: #313133; -fx-text-fill: white;"/>
       
         <Label text="Identificador do espeto" />
-        <TextField fx:id="idField" PromptText="Identificador..."/>
+        <TextField fx:id="idField" PromptText="Identificador..." style="-fx-background-color: #313133; -fx-text-fill: white;"/>
 
         <Button fx:id="registerButton" text="Registrar" onAction="#registerStick"/>
 
